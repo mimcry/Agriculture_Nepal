@@ -1,14 +1,25 @@
 # AgriNepal
 
 AgriNepal is an innovative platform designed to revolutionize agriculture in Nepal. It connects farmers, traders, and consumers to enhance productivity, efficiency, and sustainability in the agricultural sector.
-![Screenshot 2025-01-02 010724](https://github.com/user-attachments/assets/a0c25fee-0a9c-4193-be4d-83b8a75dd08c)
-![Screenshot 2025-01-02 011044](https://github.com/user-attachments/assets/daf0d3d0-62cc-47a1-ac01-b321efa15778)
-![Screenshot 2025-01-02 011005](https://github.com/user-attachments/assets/5bb946b7-01c8-45c5-a6e5-902041cf8d20)
-![Screenshot 2025-01-02 010744](https://github.com/user-attachments/assets/6fc91c68-8891-45b7-af28-12f87e3ba465)
+
+| ![Home Page](https://github.com/user-attachments/assets/a0c25fee-0a9c-4193-be4d-83b8a75dd08c) | ![Login Page](https://github.com/user-attachments/assets/6fc91c68-8891-45b7-af28-12f87e3ba465) |
+|:---------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------:|
+| **Home Page**                                                                                 | **Login Page**                                                                                |
+
+| ![Contact Us Page](https://github.com/user-attachments/assets/5bb946b7-01c8-45c5-a6e5-902041cf8d20) | ![Weather Update](https://github.com/user-attachments/assets/daf0d3d0-62cc-47a1-ac01-b321efa15778) |
+|:----------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------:|
+| **Contact Us Page**                                                                                 | **Weather Update**                                                                                |
+
+|![Market place for Buyers](https://github.com/user-attachments/assets/1750aa83-2866-4196-85fa-94aa50ff3363)|
+|:----------------------------------------------------------------------------------------------------:|
+| **Market place for Buyers**                                                                                 | 
+
+
+
 ## Mobile View
 
-![471866301_577169105228352_7449210535797245695_n](https://github.com/user-attachments/assets/7909c2e9-4137-4c97-87c4-fd627b128800)
-<img src="https://github.com/user-attachments/assets/7909c2e9-4137-4c97-87c4-fd627b128800" alt="Screenshot Description" width="500" />
+
+<img src="https://github.com/user-attachments/assets/7909c2e9-4137-4c97-87c4-fd627b128800" alt="Screenshot Description" width="200" height="400" />
 
 
 ## Features
