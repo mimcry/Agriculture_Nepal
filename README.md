@@ -8,6 +8,8 @@ AgriNepal is an innovative platform designed to revolutionize agriculture in Nep
 ## Mobile View
 
 ![471866301_577169105228352_7449210535797245695_n](https://github.com/user-attachments/assets/7909c2e9-4137-4c97-87c4-fd627b128800)
+<img src="https://github.com/user-attachments/assets/7909c2e9-4137-4c97-87c4-fd627b128800" alt="Screenshot Description" width="500" />
+
 
 ## Features
 - **Frontend**: Built with React.js for a modern, user-friendly interface.
