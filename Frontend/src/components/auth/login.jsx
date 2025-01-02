@@ -28,7 +28,7 @@ const Loginpage = () => {
       password: formData.get('password'),
     };
     try {
-      const response = await fetch('http://localhost:8000/login', {
+      const response = await fetch(`http://localhost:8000/api/login`, {
         method: 'POST',
 
         headers: {

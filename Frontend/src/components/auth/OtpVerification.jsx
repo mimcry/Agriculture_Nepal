@@ -45,7 +45,7 @@ console.log("user email",email);
   
     // Send OTP to the backend for verification
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/verify-otp`, {
+      const response = await fetch(`http://localhost:8000/api/verify-otp`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ console.log("user email",email);
     setIsTimerActive(true); 
   
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/resend-verification`, {
+      const response = await fetch(`http://localhost:8000/api/resend-otp`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

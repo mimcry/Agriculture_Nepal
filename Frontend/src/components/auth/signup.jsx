@@ -52,7 +52,7 @@ const SignupPage = () => {
   const onSubmit = async (data) => {
     setIsLoading(true);
     try {
-      const response = await fetch('http://localhost:8000/signup', {
+      const response = await fetch(`http://localhost:8000/api/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

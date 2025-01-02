@@ -111,7 +111,7 @@ function ProfilePage() {
       const access_token = localStorage.getItem('access_token');
       try {
         const response = await fetch(
-         `${process.env.REACT_APP_API_URL}/profile/${id}/avatar`,
+         `http://localhost:8000/profile/${id}/avatar`,
           {
             method: 'PUT',
             headers: {
@@ -153,7 +153,7 @@ function ProfilePage() {
       try {
         setIsLoading(true);
   
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/profile/${id}`, {
+        const response = await fetch(`http://localhost:8000/profile/${id}`, {
           method: 'PUT',
           headers: {
             Authorization: `Bearer ${access_token}`,

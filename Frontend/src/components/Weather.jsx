@@ -174,7 +174,7 @@ const Weather = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [city, setCity] = useState('Dhulikhel');
-  const weatherApiUrl = 'http://localhost:8000/weather';
+  const weatherApiUrl = 'http://localhost:8000/api/weather';
 
   const weatherIcons = {
     Clear: <WiDaySunny />,
