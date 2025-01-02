@@ -9,7 +9,7 @@ const uploadsPath = path.join(__dirname, "uploads", "avatars");
 const authRoutes = require("./routes/authRoutes");
 const weatherRoutes = require("./routes/weatherRoutes");
 const profileRouter = require("./routes/profileRoutes");
-
+const contactRouter = require("./routes/contactRoutes");
 // Check if the directory exists, if not create it
 if (!fs.existsSync(uploadsPath)) {
   fs.mkdirSync(uploadsPath, { recursive: true });
@@ -29,34 +29,14 @@ const upload = multer({ storage: storage });
 const app = express();
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-// const transporter = nodemailer.createTransport({
-//   service: "gmail",
-//   auth: { user: "salongautam4@gmail.com", pass: "lrli yavn aiej qjxk" },
-// });
-// const pool = new Pool({
-//   user: process.env.DB_USER || "postgres",
-//   host: process.env.DB_HOST || "localhost",
-//   database: process.env.DB_NAME || "postgres",
-//   password: process.env.DB_PASSWORD || "sql",
-//   port: process.env.DB_PORT || 5432,
-// });
-// pool.connect((err, client, release) => {
-//   if (err) {
-//     console.error("Error connecting to the database:", err.stack);
-//   } else {
-//     console.log("Database connected successfully!");
-//   }
-//   release(); // Release the client back to the pool
-// });
-// Middleware
+
 app.use(cors());
 app.use(express.json()); // Parse JSON bodies
 app.use(bodyParser.json());
-
 app.use("/api", authRoutes);
 app.use("/api", weatherRoutes);
 app.use("/profile", profileRouter);
-
+app.use("/contactus", contactRouter);
 // Refresh token route
 app.post("/refresh-token", async (req, res) => {
   console.log(req.body);
@@ -84,17 +64,7 @@ app.post("/refresh-token", async (req, res) => {
     res.status(403).json({ error: "Invalid or expired refresh token" });
   }
 });
-// Logout route
-app.post("/logout", (req, res) => {
-  // Clear the refresh token cookie
-  res.clearCookie("refresh_token", {
-    httpOnly: true,
-    secure: true,
-    sameSite: "Strict",
-  });
 
-  res.json({ message: "Logged out successfully" });
-});
 
 // Start the server
 const PORT = process.env.PORT || 8000;

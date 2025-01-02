@@ -26,7 +26,7 @@ const MyDropdown = ({ user }) => {
       }
 
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/profile/${id}`, {
+        const response = await fetch(`http://localhost:8000/profile/${id}`, {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${token}`,
