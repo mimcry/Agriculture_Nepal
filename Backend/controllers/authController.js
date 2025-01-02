@@ -2,12 +2,8 @@ const pool = require("../config/db");
 const bcrypt = require("bcrypt");
 const otpGenerator = require("otp-generator");
 const jwt = require("jsonwebtoken");
+const transporter=require('../config/emailTransporter')
 
-const nodemailer = require("nodemailer");
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: { user: "salongautam4@gmail.com", pass: "lrli yavn aiej qjxk" },
-});
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
 
 
