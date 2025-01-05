@@ -4,6 +4,7 @@ import { isLoggedInAtom } from '../../state/authAtom';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { routes } from '../../routes/routes';
+import audio from '../audio/audio';
 const Logout = () => {
   const [_, setAuthenticated] = useAtom(isLoggedInAtom);
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ const Logout = () => {
     navigate(routes.login);
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
+    audio();
     toast.success('You are logged out');
   };
 

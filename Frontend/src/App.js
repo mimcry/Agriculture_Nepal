@@ -27,7 +27,7 @@ function App() {
         <Route path={routes.contactus} element={<ContactUs />} />
         <Route path={routes.logout} element={<Logout />} />
         <Route path={routes.profile} element={<ProfilePage />} />
-        <Route path={routes.otpverify} element={<OtpVerification/>} />
+        <Route path={routes.otpverify} element={<OtpVerification />} />
       </Routes>
       <Footer />
     </div>

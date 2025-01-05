@@ -18,8 +18,8 @@ const MyDropdown = ({ user }) => {
   useEffect(() => {
     const fetchUserDetails = async () => {
       // Ensure access_token is available
-      const token =  localStorage.getItem('access_token');
-      
+      const token = localStorage.getItem('access_token');
+
       if (!token) {
         setError('No access token found');
         return;
@@ -72,37 +72,44 @@ const MyDropdown = ({ user }) => {
     <DropdownMenuPrimitive.Root>
       <DropdownMenuPrimitive.Trigger asChild>
         <div className="rounded-full border relative hover:cursor-pointer">
-         {userDetails?.avatar?(  <img
-            src={`http://localhost:8000${userDetails?.avatar}`}
-            alt="Profile Pic"
-            className="rounded-full h-10 w-10"
-            height={40}
-            width={40}
-          />):(  <img
-            src={avatar}
-            alt="Profile Pic"
-            className="rounded-full h-10 w-10"
-            height={40}
-            width={40}
-          />)}
-        
+          {userDetails?.avatar ? (
+            <img
+              src={`http://localhost:8000${userDetails?.avatar}`}
+              alt="Profile Pic"
+              className="rounded-full h-10 w-10"
+              height={40}
+              width={40}
+            />
+          ) : (
+            <img
+              src={avatar}
+              alt="Profile Pic"
+              className="rounded-full h-10 w-10"
+              height={40}
+              width={40}
+            />
+          )}
         </div>
       </DropdownMenuPrimitive.Trigger>
       <DropdownMenuPrimitive.Content className="me-8 w-[350px] bg-white shadow-xl rounded-xl p-4 mt-3 z-20">
         <div className="flex space-x-4 py-3 hover:border-none">
-        {userDetails?.avatar?(  <img
-            src={`http://localhost:8000${userDetails?.avatar}`}
-            alt="Profile Pic"
-            className="rounded-full h-10 w-10"
-            height={40}
-            width={40}
-          />):(  <img
-            src={avatar}
-            alt="Profile Pic"
-            className="rounded-full h-10 w-10"
-            height={40}
-            width={40}
-          />)}
+          {userDetails?.avatar ? (
+            <img
+              src={`http://localhost:8000${userDetails?.avatar}`}
+              alt="Profile Pic"
+              className="rounded-full h-10 w-10"
+              height={40}
+              width={40}
+            />
+          ) : (
+            <img
+              src={avatar}
+              alt="Profile Pic"
+              className="rounded-full h-10 w-10"
+              height={40}
+              width={40}
+            />
+          )}
           <h4 className="text-lg my-auto font-semibold text-black">
             Hi, {userDetails?.firstname} {userDetails?.lastname}
           </h4>

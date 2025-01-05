@@ -116,9 +116,8 @@ export default function Navbar() {
                 </span>
               </div>
             </Link>
-          
+
             <div className="flex items-center relative">
-              
               {isLoggedIn ? (
                 <div className="ml-3 ">
                   <MyDropdown />
@@ -149,7 +148,7 @@ export default function Navbar() {
             <Search className="w-6 h-6" />
             <span className="text-xs mt-1">Search</span>
           </button>
-          <NavItem href={routes.category}  icon={Book}>
+          <NavItem href={routes.category} icon={Book}>
             Resources
           </NavItem>
           <NavItem href={routes.profile} icon={User}>

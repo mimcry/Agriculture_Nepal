@@ -8,5 +8,5 @@ export const routes = {
   contactus: '/contactus',
   category: '/category',
   profile: '/profile/:id',
-  otpverify:"/otpverify"
+  otpverify: '/otpverify',
 };

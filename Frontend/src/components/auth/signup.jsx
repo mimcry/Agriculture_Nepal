@@ -9,10 +9,11 @@ import * as Yup from 'yup';
 import { routes } from '../../routes/routes';
 import { useAtom } from 'jotai';
 import { userEmail } from '../../state/authAtom';
+import audio from '../audio/audio';
 const SignupPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const[_,setEmail] = useAtom(userEmail);
+  const [_, setEmail] = useAtom(userEmail);
   const navigate = useNavigate();
   const signupSchema = Yup.object().shape({
     firstname: Yup.string().required('First name is required'),
@@ -67,9 +68,10 @@ const SignupPage = () => {
           usertype: data.user,
         }),
       });
-      setEmail(data.email)
+      setEmail(data.email);
       if (response.ok) {
         const result = await response.json();
+        audio();
         toast.success(result.message);
         navigate(routes.otpverify);
       } else {

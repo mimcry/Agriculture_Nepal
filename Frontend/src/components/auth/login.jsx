@@ -11,6 +11,7 @@ import {
 import { useAtom } from 'jotai';
 import { useNavigate } from 'react-router-dom';
 import { routes } from '../../routes/routes';
+import audio from '../audio/audio';
 const Loginpage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -39,9 +40,10 @@ const Loginpage = () => {
 
       if (response.ok) {
         const result = await response.json();
+        audio();
         toast.success(result.message);
         console.log('userid', result);
-        
+
         setAccessToken(result.accessToken);
         localStorage.setItem('access_token', result.accessToken);
         setRefreshToken(result.refreshToken);

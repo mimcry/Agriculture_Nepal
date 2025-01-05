@@ -23,6 +23,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { Controller } from 'react-hook-form';
 import useTokenExpiry from '../utils/handleRefresh';
+import audio from '../audio/audio';
 function ProfilePage() {
   const { handleTokenExpiry } = useTokenExpiry();
   const [id] = useAtom(userIdAtom);
@@ -111,7 +112,7 @@ function ProfilePage() {
       const access_token = localStorage.getItem('access_token');
       try {
         const response = await fetch(
-         `http://localhost:8000/profile/${id}/avatar`,
+          `http://localhost:8000/profile/${id}/avatar`,
           {
             method: 'PUT',
             headers: {
@@ -130,7 +131,9 @@ function ProfilePage() {
         }
         const data = await response.json();
         if (response.ok) {
+          audio();
           toast.success('Avatar updated successfully');
+
           setUserDetails((prevDetails) => ({
             ...prevDetails,
             avatar: data.avatar, // Assuming the backend returns the new avatar URL
@@ -148,11 +151,11 @@ function ProfilePage() {
   console.log('avatar Url', avatarFile);
   const onSubmit = async (data) => {
     const access_token = localStorage.getItem('access_token');
-  
+
     const updateProfilePromise = new Promise(async (resolve, reject) => {
       try {
         setIsLoading(true);
-  
+
         const response = await fetch(`http://localhost:8000/profile/${id}`, {
           method: 'PUT',
           headers: {
@@ -161,25 +164,25 @@ function ProfilePage() {
           },
           body: JSON.stringify(data),
         });
-  
+
         if (response.status === 401) {
           console.log('Token expired or invalid. Please log in again.');
           handleTokenExpiry();
           reject(new Error('Token expired or invalid'));
           return;
         }
-  
+
         if (!response.ok) {
           reject(new Error('Failed to update profile'));
           return;
         }
-  
+
         const updatedData = await response.json();
         setUserDetails(updatedData);
         setIsEditing(false);
         setFormData(updatedData);
         navigate(routes.home);
-  
+
         resolve('Profile updated successfully!');
       } catch (error) {
         reject(error);
@@ -187,7 +190,7 @@ function ProfilePage() {
         setIsLoading(false);
       }
     });
-  
+
     // Use `toast.promise` for notifications
     toast.promise(updateProfilePromise, {
       pending: 'Updating profile...',
@@ -195,7 +198,7 @@ function ProfilePage() {
       error: 'Error updating profile. Please try again.',
     });
   };
-  
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({

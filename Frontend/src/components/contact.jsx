@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Send, CheckCircle2 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import useTokenExpiry from './utils/handleRefresh';
+import { useNavigate } from 'react-router-dom';
+import audio from './audio/audio';
 const ContactUs = () => {
+  const navigate = useNavigate();
   const { handleTokenExpiry } = useTokenExpiry();
+  const [isloading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -16,23 +20,18 @@ const ContactUs = () => {
   };
 
   const handleSubmit = async (e) => {
-
+    setIsLoading(true);
     e.preventDefault();
     const access_token = localStorage.getItem('access_token');
     try {
-
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/contactus`,
-        {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${access_token}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
-        }
-
-      );
+      const response = await fetch(`http://localhost:8000/contactus`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
       if (response.status === 401) {
         console.log('Token expired or invalid. Please log in again.');
         handleTokenExpiry();
@@ -45,18 +44,19 @@ const ContactUs = () => {
       if (response.ok) {
         console.log('Form submitted:', formData);
         setSubmitted(true);
-      
+
         setFormData({ name: '', email: '', message: '' });
         toast.success('Form submitted successfully');
+        audio();
+        navigate('/');
       }
-      
     } catch (error) {
       console.error('Error submitting form:', error);
       toast.error('Failed to submit form. Please try again.');
-    } 
-   
-
-    };
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="bg-gradient-to-br from-green-50 to-green-100 py-16 px-4 sm:px-6 lg:px-8">
@@ -183,9 +183,10 @@ const ContactUs = () => {
                 <button
                   type="submit"
                   className="w-full bg-green-700 text-white py-4 rounded-lg font-semibold hover:bg-green-800 transition duration-300 flex items-center justify-center space-x-2"
+                  disabled={isloading}
                 >
-                  <Send className="w-5 h-5" />
-                  <span>Send Message</span>
+                  <Send className="w-5 h-5 mr-2" />
+                  {isloading ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             )}
